@@ -330,7 +330,7 @@ message PmdLoopbackCapabilities {
   * if `teardown_time` is not set, begin teardown.
     * if set wait until `teardown_time` then begin teardown
   * Once the teardown is complete, take the final reading on packets_sent, packets_received, packets_error and packets_dropped at the Generator end.
-    *  Make sure that the expected_rate_bytes_per_second and qualification_rate_bytes_per_second counters are not updated post teardown. 
+    *  qualification_rate_bytes_per_second should be computed only during the test duration using the bytes sent in a sampling interval.
 * Reflector
   * Validate that `setup_duration` is >= `min_setup_duration`
   * Validate that `teardown_duration` is >= `min_teardown_duration`
@@ -343,7 +343,7 @@ message PmdLoopbackCapabilities {
   * Once duration is reached wait for `post_sync_duration` if set
   * After `post_sync_duration` is reached begin teardown
   * Once the teardown is complete, take the final reading on packets_sent, packets_received, packets_error and packets_dropped at the reflector end.
-    *  Make sure that the qualification_rate_bytes_per_second counter is not updated post teardown. 
+    *  qualification_rate_bytes_per_second should be computed only during the test duration using the bytes sent in a sampling interval.
 
 ### Workflow for Delete in the case of canceling early
 
